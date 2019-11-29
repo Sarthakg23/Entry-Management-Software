@@ -7,7 +7,7 @@ class Main{
 public static void main(String args[])throws Exception{  
 try{  
 Class.forName("com.mysql.jdbc.Driver");  
-Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/EMS","root","user1");
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/EMS","root","user1");//for storing entries into EMS database with username root and password user1
 if(con==null)
 {
  System.out.println("Connection not established");
@@ -18,31 +18,28 @@ else
  System.out.println("Connection Ok");
  System.out.println("-------------------------------------------");
 }
-int n=1;
-while(n!=0)
-{
 	Scanner sc= new Scanner(System.in);
 	
 System.out.println("Enter Visitor Details:");
 System.out.println("Enter Name :");
 String name=sc.nextLine();
 System.out.println("Enter Email Address :");
-String email=sc.next();
-System.out.println("Enter Phone Number :\n");
-String phone=sc.next();
+String email=sc.nextLine();
+System.out.println("Enter Phone Number :");
+String phone=sc.nextLine();
 String checkout="";
 
 System.out.println("Enter Host Details: ");
 System.out.println("Enter Name :");
-String hname=sc.next();
+String hname=sc.nextLine();
 System.out.println("Enter Email Address :");
-String hemail=sc.next();
+String hemail=sc.nextLine();
 System.out.println("Enter Phone Number :");
-String hphone=sc.next();
+String hphone=sc.nextLine();
 System.out.println("Enter Address :");
-String address=sc.next();
+String address=sc.nextLine();
 System.out.println("Enter Checkin Time :");
-String checkin=sc.next();
+String checkin=sc.nextLine();
 
 
 
@@ -76,13 +73,14 @@ if(insert2>0)
 Email e=new Email(hemail,name,phone,email);
 e.sendtohost();//Mail sent
 
-System.out.println("Enter Checkout Time");
-String checkoutfinal=sc.next();
-PreparedStatement pstmt3=con.prepareStatement("update visitor set checkout=? where email=?");
-pstmt3.setString(1,checkout);
-pstmt3.setString(2,email);
-int modify=pstmt2.executeUpdate();
 
+String checkoutfinal;
+	System.out.println("Enter Checkout Time");
+	checkoutfinal=sc.nextLine();
+PreparedStatement pstmt3=con.prepareStatement("update visitor set checkout=? where email=?");
+pstmt3.setString(1,checkoutfinal);
+pstmt3.setString(2,email);
+pstmt3.executeUpdate();
 
 Statement stmt=con.createStatement();  
 ResultSet rs=stmt.executeQuery("select * from visitor");  
@@ -100,9 +98,6 @@ while(rs.next())
 
 Email e2=new Email(email,fname,fphone,fcheckin,fcheckout,fhost,faddress);
 e2.sendtoVisitor();
-
-n=0;
-}
 con.close();
 }
 catch(Exception e){ System.out.println(e);} 
