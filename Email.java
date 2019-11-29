@@ -79,7 +79,7 @@ public class Email {
          message.setSubject("Vistor Details.");
 
          // Now set the actual message
-         message.setText("Name of Host :"+name+"\n"+"Phone number of Host :"+phone+"\n"+"Email of Host :"+email+"\n");
+         message.setText("Name of Visitor :"+name+"\n"+"Phone number of Visitor :"+phone+"\n"+"Email of Visitor :"+email+"\n");
 
          // Send message
          Transport.send(message);
