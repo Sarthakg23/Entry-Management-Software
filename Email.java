@@ -35,11 +35,11 @@ public class Email {
 			  this.address=address;
 		  }
 
-      String from = "tempsar2019@gmail.com";// Common Mail which Sends Mails to both Visitor and Host
+      String from = "xxxxx@gmail.com";// Common Mail which Sends Mails to both Visitor and Host
 
       String host = "smtp.gmail.com";
       
-      String pass="abc@12315";// Password of the Common Mail
+      String pass="xxxxxxx";// Password of the Common Mail
       
       void sendtohost()//function which sends Mail to Host
       {
