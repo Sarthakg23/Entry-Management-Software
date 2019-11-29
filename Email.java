@@ -1,5 +1,3 @@
-// File Name SendEmail.java
-
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -7,7 +5,7 @@ import javax.activation.*;
 
 public class Email {
 
-		  String to="";
+		  String to="";     // Recipient's email ID .
 		  String name=" ";
 		  String phone=" ";
 		  String email=" ";
@@ -18,7 +16,7 @@ public class Email {
 		  
 		  
 		  
-		  Email(String to , String name, String phone, String email)
+		  Email(String to , String name, String phone, String email)//Email Contructor For initialising Visitor details to Send Visitor Details to Host.
 		  {
 			  this.to=to;
 			  this.name=name;
@@ -26,7 +24,7 @@ public class Email {
 			  this.email=email;
 		  }
 		  
-		  Email(String to, String name, String phone, String checkin, String checkout,String hname,String address)
+		  Email(String to, String name, String phone, String checkin, String checkout,String hname,String address)//Email Contructor For initialising Visit details to Send Visit Details to Visitor after Checkout.
 		  {
 			  this.to=to;
 			  this.name=name;
@@ -36,17 +34,14 @@ public class Email {
 			  this.hname=hname;
 			  this.address=address;
 		  }
-      // Recipient's email ID needs to be mentioned.
 
-      // Sender's email ID needs to be mentioned
-      String from = "tempsar2019@gmail.com";
+      String from = "tempsar2019@gmail.com";// Common Mail which Sends Mails to both Visitor and Host
 
-      // Assuming you are sending email from localhost
       String host = "smtp.gmail.com";
       
-      String pass="abc@12315";
+      String pass="abc@12315";// Password of the Common Mail
       
-      void sendtohost()
+      void sendtohost()//function which sends Mail to Host
       {
 
       // Get system properties
@@ -62,7 +57,7 @@ public class Email {
       properties.setProperty("mail.smtp.host", host);
       
 
-      // Get the default Session object.
+      // Making Session Object 
       Session session = Session.getInstance(properties,new Authenticator() {
     	protected PasswordAuthentication getPasswordAuthentication()
     	{
@@ -88,12 +83,13 @@ public class Email {
 
          // Send message
          Transport.send(message);
-         System.out.println("Sent message successfully....");
+         System.out.println("Sent message to Host successfully....");
       } catch (MessagingException mex) {
          mex.printStackTrace();
       }
       }
-      void sendtoVisitor()
+      
+      void sendtoVisitor()//function which sends mail to Visitor
       {
 
       // Get system properties
@@ -109,7 +105,7 @@ public class Email {
       properties.setProperty("mail.smtp.host", host);
       
 
-      // Get the default Session object.
+      // Making Session object.
       Session session = Session.getInstance(properties,new Authenticator() {
     	protected PasswordAuthentication getPasswordAuthentication()
     	{
@@ -135,7 +131,7 @@ public class Email {
 
          // Send message
          Transport.send(message);
-         System.out.println("Sent message successfully....");
+         System.out.println("Sent message to Visitor successfully....");
       } catch (MessagingException mex) {
          mex.printStackTrace();
       }
