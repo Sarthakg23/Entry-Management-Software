@@ -8,7 +8,7 @@ Input
 
 Mail to Host
 
-![alt text](https://github.com/Sarthakg23/Entry-Management-Software/blob/master/out2.png)
+![alt text](https://github.com/Sarthakg23/Entry-Management-Software/blob/master/out3.png)
 
 
 Mail to Vistor
