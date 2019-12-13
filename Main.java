@@ -97,6 +97,9 @@ while(rs.next())
 
 
 Email e2=new Email(email,fname,fphone,fcheckin,fcheckout,fhost,faddress);
+String msgtohost="Name of Visitor :"+name+"\n"+"Phone number of Visiter :"+phone+"\n"+"Email of Visiter :"+email;
+SMS stoh=new SMS(msgtohost,hphone);
+stoh.sendSms();
 e2.sendtoVisitor();
 con.close();
 }
